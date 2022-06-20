@@ -13,7 +13,7 @@ Container["Generator"] = 0xFF
 Fox.append(Container)
 
 
-KS_FRAME = 0x18
+KS_FRAME = 29 #0x18
 KS_STOP = 0x0c
 
 def generateBar(container, color):
@@ -37,7 +37,7 @@ def generateBar(container, color):
     
     container["ImageList"].extend(healthImages)
     
-    Shape["KitterSpeak"] = []
+    Shape["KitterSpeak"] = [(11,100,0)]
     for i in range(101):
         Shape["KitterSpeak"].append((KS_FRAME, i, 0))
         Shape["KitterSpeak"].append((KS_STOP, 0, 0))
@@ -91,7 +91,7 @@ def generateText(container, count, color, bg="#000000", mode = 0):
     
     container["ImageList"].extend(healthImages)
     
-    Shape["KitterSpeak"] = []
+    Shape["KitterSpeak"] = [(11,100,0)]
     for i in range(count):
         Shape["KitterSpeak"].append((KS_FRAME, i, 0))
         Shape["KitterSpeak"].append((KS_STOP, 0, 0))
@@ -112,12 +112,44 @@ def generateText(container, count, color, bg="#000000", mode = 0):
         
         Sprite["Purpose"] = 16
         Sprite["Image"] = container["ImageList"].index(healthImages[i]) + 1
+
+
+def generateBlank(container):
+    Object = fox5.Fox5Object()
+    container.append(Object)
+    
+    Object["EditType"] = 13
+    Object["Flags"] = 0
+    
+    Shape = fox5.Fox5Shape()
+    Object.append(Shape)
+    
+    Shape["State"] = 0
+    Shape["Direction"] = 0
+    Shape["Ratio"] = (1, 1)
+    Shape["Purpose"] = 5
+    
+    Frame = fox5.Fox5Frame()
+    Frame["FrameOffset"] = (0, 0)
+    Frame["FurreOffset"] = (0, 0)
+    Shape.append(Frame)
+    
+    Sprite = fox5.Fox5Sprite()
+    Frame.append(Sprite)
+    
+    Sprite["Purpose"] = 16
+    Sprite["Image"] = 0
     
 
 generateBar(Container, "#00cf00")
+generateBlank(Container)
 generateBar(Container, "#0000cf")
+generateBlank(Container)
 generateText(Container, 100, "#00ff00")
+generateBlank(Container)
 generateText(Container, 100, "#00ff00")
+generateBlank(Container)
 generateText(Container, 1000, "#FFD700", mode = 1)
+generateBlank(Container)
 with open("test.fox", "wb") as f:
     f.write(bytes(Fox))

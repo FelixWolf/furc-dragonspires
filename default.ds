@@ -5,6 +5,8 @@ DSPK V04.00 Furcadia
     (5:600) memorize that the PhoenixSpeak info {gold} about the triggering furre will now be 10.
     (5:600) memorize that the PhoenixSpeak info {stamina} about the triggering furre will now be 100.
     (5:600) memorize that the PhoenixSpeak info {health} about the triggering furre will now be 100.
+    (5:600) memorize that the PhoenixSpeak info {magic} about the triggering furre will now be 30.
+    (5:600) memorize that the PhoenixSpeak info {maxMagic} about the triggering furre will now be 30.
     (5:200) emit message {https://github.com/felixwolf/furc-dragonspires} to the triggering furre.
 
 
@@ -15,9 +17,12 @@ DSPK V04.00 Furcadia
     (5:182) move the triggering furre's DragonSpeak Button 11 to (211,19).
     (5:180) show the triggering furre's DragonSpeak Button 12.
     (5:182) move the triggering furre's DragonSpeak Button 12 to (187,19).
+    (5:180) show the triggering furre's DragonSpeak Button 13.
+    (5:182) move the triggering furre's DragonSpeak Button 13 to (180,235).
+    (5:180) show the triggering furre's DragonSpeak Button 14.
+    (5:182) move the triggering furre's DragonSpeak Button 14 to (197,235).
     (5:180) show the triggering furre's DragonSpeak Button 15.
     (5:182) move the triggering furre's DragonSpeak Button 15 to (169,263).
-
 
 (0:9) When someone arrives in the Dream,
 (0:1) Whenever someone moves,
@@ -33,6 +38,11 @@ DSPK V04.00 Furcadia
     (5:306) multiply variable %magic by 2.
     (5:306) multiply variable %maxMagic by 2.
     (5:306) multiply variable %gold by 2.
+    (5:302) take variable %health and subtract 1 from it.
+    (5:302) take variable %stamina and subtract 1 from it.
+    (5:302) take variable %magic and subtract 1 from it.
+    (5:302) take variable %maxMagic and subtract 1 from it.
+    (5:302) take variable %gold and subtract 1 from it.
     (5:442) jump the animation of the triggering furre's DragonSpeak Button 11 to step %health.
     (5:442) jump the animation of the triggering furre's DragonSpeak Button 12 to step %stamina.
     (5:442) jump the animation of the triggering furre's DragonSpeak Button 13 to step %magic.
